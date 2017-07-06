@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
  class Auth extends React.Component {
-     constructor(props){
+     constructor(props) {
          super(props);
          this.state = {
              entered_Email: '',
@@ -23,11 +23,11 @@ import React, { Component } from 'react';
      handleEmailChange(event) {
          this.setState({entered_Email: event.target.value});
      }
-     handlePasswordChange(event){
+     handlePasswordChange(event) {
          this.setState({entered_Password:event.target.value});
      }
 
-     render(){
+     render() {
         return (
                 <div>
                     <form className="form-horizontal">
