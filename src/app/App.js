@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Auth from './auth/auth';
+import Auth from '../auth/Auth.js';
 
 class App extends Component {
     constructor(props){
