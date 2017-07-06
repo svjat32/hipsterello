@@ -3,7 +3,7 @@ import './App.css';
 import Auth from '../auth/Auth.js';
 
 class App extends Component {
-    constructor(props){
+    constructor(props) {
         super();
 
         this.state = {
