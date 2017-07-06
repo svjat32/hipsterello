@@ -8,5 +8,3 @@ import auth from './auth/Auth'
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
-
-

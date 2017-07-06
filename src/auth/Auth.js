@@ -20,7 +20,6 @@ import React, { Component } from 'react';
          }
      } */
 
-
      handleEmailChange(event) {
          this.setState({entered_Email: event.target.value});
      }
@@ -61,4 +60,5 @@ import React, { Component } from 'react';
         );
     }
 }
+
 export default Auth;
