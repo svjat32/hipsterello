@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import logo from '../images/logo.svg';
 import ReactDOM from 'react-dom'
 import logo from './logo.svg';
 import './App.css';
-import Auth from './Auth/Auth';
+import Auth from './auth/auth';
 
 
 
@@ -39,4 +40,3 @@ class App extends Component {
 }}
 
 export default App;
-
