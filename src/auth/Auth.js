@@ -35,21 +35,21 @@ import React, { Component } from 'react';
 
                     <legend>Form Name</legend>
                     <div className="form-group">
-                        <label className="col-md-4 control-label" for="textinput">E-mail</label>
+                        <label className="col-md-4 control-label">E-mail</label>
                         <div className="col-md-4">
                             <input id="textinput" onChange={this.handleEmailChange.bind(this)} name="textinput" type="text" placeholder="Enter e-mail" className="form-control input-md" />
 
                         </div>
                     </div>
                     <div className="form-group">
-                        <label className="col-md-4 control-label" for="passwordinput">Password</label>
+                        <label className="col-md-4 control-label">Password</label>
                         <div className="col-md-4">
                             <input id="passwordinput" onChange={this.handlePasswordChange.bind(this)} name="passwordinput" type="password" placeholder="Enter password" className="form-control input-md" />
 
                         </div>
                     </div>
                     <div className="form-group">
-                        <label className="col-md-4 control-label" for="login-button"></label>
+                        <label className="col-md-4 control-label"></label>
                         <div className="col-md-4">
                             <button id="login-button" name="login-button" className="btn btn-info">Login</button>
                         </div>
