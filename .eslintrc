@@ -1,0 +1,6 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "space-before-blocks": 2
+  }
+}
