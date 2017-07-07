@@ -17,6 +17,7 @@ script:
   - npm test
 
 notifications:
+  email: false
   slack:
     rooms:
       - hipsterello:8dxZ3Xs9P1HYX9MSrsFCLeRO
