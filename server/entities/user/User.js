@@ -9,5 +9,5 @@ const UserSchema = new Schema({
   email: { type: String, unique: true },
   password: { type: String },
 });
-const User = mongoose.model('User', UserSchema);
 
+const User = mongoose.model('User', UserSchema);
