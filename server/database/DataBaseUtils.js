@@ -3,7 +3,7 @@
  */
 
 import mongoose from 'mongoose';
-import config from '../../server/config.json';
+import config from '../../src/config.json';
 import '../entities/user/User.js';
 import '../entities/board/Board.js';
 import '../entities/list/List.js';

@@ -12,5 +12,10 @@ const ListSchema = new Schema({
     color: { type: String },
     createdAd: {type: Date}
 });
+
+ListSchema.methods.findByBoardId = function(request) {
+    return this.model('List').find({ boardId: this.boardId }, request);
+};
+
 const List = mongoose.model('List', ListSchema);
 
