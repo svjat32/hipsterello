@@ -12,5 +12,10 @@ const BoardSchema = new Schema({
     color: { type: String },
     createdAd: {type: Date}
 });
+
+BoardSchema.methods.findByUserId = function(request) {
+    return this.model('Board').find({ userId: this.userId }, request);
+};
+
 const Board = mongoose.model('Board', BoardSchema);
 
