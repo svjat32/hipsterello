@@ -12,5 +12,10 @@ const CardSchema = new Schema({
     color: { type: String },
     createdAd: {type: Date}
 });
+
+CardSchema.methods.findByListId = function(request) {
+    return this.model('Card').find({ listId: this.listId }, request);
+};
+
 const Card = mongoose.model('Card', CardSchema);
 
