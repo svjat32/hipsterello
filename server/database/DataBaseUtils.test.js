@@ -169,3 +169,7 @@ it('deletes card', () => {
 
     db.deleteCard(data);
 });
+
+it('closes connection', () => {
+    db.closeConnection();
+});

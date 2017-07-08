@@ -18,6 +18,10 @@ export function setUpConnection() {
     mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`);
 }
 
+export function closeConnection() {
+    mongoose.connection.close();
+}
+
 // data === some User
 export function findUser(data) {
     return User.findByEmail(data.email);
