@@ -15,7 +15,9 @@ const ListSchema = new Schema({
 
 ListSchema.statics.findByBoardId = function(request) {
     // Is not correct
-    return this.model('List').find({ boardId: this.boardId }, request);
+    const result = this.model('List').findOne({'boardId' : request}, function(err, docs) {});
+    console.log(result);
+    return result;
 };
 
 const List = mongoose.model('List', ListSchema);

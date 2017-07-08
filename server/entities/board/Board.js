@@ -15,7 +15,9 @@ const BoardSchema = new Schema({
 
 BoardSchema.statics.findByUserId = function(request) {
     // Is not correct
-    return this.model('Board').find({ userId: this.userId }, request);
+    const result = this.model('Board').findOne({'userId' : request}, function(err, docs) {});
+    console.log(result);
+    return result;
 };
 
 const Board = mongoose.model('Board', BoardSchema);

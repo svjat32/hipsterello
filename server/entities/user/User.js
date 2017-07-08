@@ -12,7 +12,9 @@ const UserSchema = new Schema({
 
 UserSchema.statics.findByEmail = function(request) {
     // Is not correct
-    return this.model('User').findOne({ email: request.email }, function(err, results) { return results.toObject; });
+    const result = this.model('User').findOne({'email' : request}, function(err, docs) {});
+    console.log(result);
+    return result;
 };
 
 const User = mongoose.model('User', UserSchema);

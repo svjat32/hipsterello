@@ -15,7 +15,9 @@ const CardSchema = new Schema({
 
 CardSchema.statics.findByListId = function(request) {
     // Is not correct
-    return this.model('Card').find({ listId: this.listId }, request);
+    const result = this.model('Card').findOne({'listId' : request}, function(err, docs) {});
+    console.log(result);
+    return result;
 };
 
 const Card = mongoose.model('Card', CardSchema);
