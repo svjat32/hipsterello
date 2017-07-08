@@ -19,14 +19,14 @@ app.use( bp.json() );
 app.use( cors({ origin: '*' }) );
 
 app.post('/login', (req, res) => {
-    // Doesn't work because findByEmail() in db.findUser() is not correct
     console.log('post login');
-    db.createUser(req.body);
-    // if (db.findUser(req.body) === null) {
-    //     console.log('  user not found \n  create new user');
-    // }
-    // console.log('findUser');
-    // db.findUser(req.body).then(data => res.send(data));
+    if (db.findUser(req.body).email === null) {
+        console.log('  user not found \n  create new user');
+        db.createUser(req.body);
+    }
+
+    console.log('findUser');
+    db.findUser(req.body).then(data => res.send(data));
 });
 
 app.post('/boards', (req, res) => {
