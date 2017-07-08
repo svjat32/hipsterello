@@ -13,7 +13,8 @@ const ListSchema = new Schema({
     createdAd: {type: Date}
 });
 
-ListSchema.methods.findByBoardId = function(request) {
+ListSchema.statics.findByBoardId = function(request) {
+    // Is not correct
     return this.model('List').find({ boardId: this.boardId }, request);
 };
 

@@ -13,7 +13,8 @@ const BoardSchema = new Schema({
     createdAd: {type: Date}
 });
 
-BoardSchema.methods.findByUserId = function(request) {
+BoardSchema.statics.findByUserId = function(request) {
+    // Is not correct
     return this.model('Board').find({ userId: this.userId }, request);
 };
 

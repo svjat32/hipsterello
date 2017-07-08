@@ -13,7 +13,8 @@ const CardSchema = new Schema({
     createdAd: {type: Date}
 });
 
-CardSchema.methods.findByListId = function(request) {
+CardSchema.statics.findByListId = function(request) {
+    // Is not correct
     return this.model('Card').find({ listId: this.listId }, request);
 };
 
