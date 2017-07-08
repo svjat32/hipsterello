@@ -35,7 +35,7 @@ it('finds user', () => {
         password: `test`
     });
 
-    expect(db.findUser(request)).toBe(user);
+    expect(db.findUser(request)).toBe(request);
 });
 
 it('deletes user', () => {
@@ -89,7 +89,7 @@ it('finds boards of current user', () => {
     const board = new Board({
         userId: null, // db.findUser(user).getId()?
         title: `testTitle`,
-        lists: null,
+        // lists: [],
         color: null,
         createdAt: new Date()
     });
@@ -110,9 +110,15 @@ it('deletes board', () => {
 });
 
 it('creates list', () => {
-    const data = null;
+    const request = ({
+        boardId: null, // db.findUser(user).getId()?
+        title: `testTitle`,
+        // cards: [],
+        color: null,
+        createdAt: new Date()
+    });
 
-    db.createList(data);
+    db.createList(request);
 });
 
 it('finds lists of current board', () => {
@@ -134,9 +140,16 @@ it('deletes list', () => {
 });
 
 it('creates card', () => {
-    const data = null;
+    const request = ({
+        listId: null,
+        title: `testTitle`,
+        text: `testText`,
+        // cards: [],
+        color: null,
+        createdAt: new Date()
+    });
 
-    db.createCard(data);
+    db.createCard(request);
 });
 
 it('finds cards of current list', () => {
@@ -155,4 +168,8 @@ it('deletes card', () => {
     const data = null;
 
     db.deleteCard(data);
+});
+
+it('closes connection', () => {
+    db.closeConnection();
 });
