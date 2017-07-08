@@ -8,17 +8,18 @@ const Schema = mongoose.Schema;
 const BoardSchema = new Schema({
     userId: { type: String },
     title: { type: String },
-    lists: { type: String },
+    // lists: [ String ],
     color: { type: String },
     createdAd: {type: Date}
 });
 
 BoardSchema.statics.findByUserId = function(request) {
-    // Is not correct
-    const result = this.model('Board').findOne({'userId' : request}, function(err, docs) {});
-    console.log(result);
+    let result = null;
+    this.model('Board').find({'userId' : request}, function(err, found) {
+        console.log(found);
+        result = found;
+    });
     return result;
 };
 
 const Board = mongoose.model('Board', BoardSchema);
-

@@ -11,9 +11,11 @@ const UserSchema = new Schema({
 });
 
 UserSchema.statics.findByEmail = function(request) {
-    // Is not correct
-    const result = this.model('User').findOne({'email' : request}, function(err, docs) {});
-    console.log(result);
+    let result = null;
+    this.model('User').findOne({'email' : request}, function(err, found) {
+        console.log(found);
+        result = found;
+    });
     return result;
 };
 
