@@ -19,19 +19,17 @@ app.use( bp.json() );
 app.use( cors({ origin: '*' }) );
 
 app.post('/login', (req, res) => {
-    console.log('post login');
-    if (db.findUser(req.body).email === null) {
-        console.log('  user not found \n  create new user');
-        db.createUser(req.body);
-    }
-
-    console.log('findUser');
-    db.findUser(req.body).then(data => res.send(data));
+    db.findUser({email: req.body.email})
+        .then(user => {
+            return (user) ? user : db.createUser(req.body);
+        })
+        .then(data => {
+            res.send(data);
+        });
 });
 
 app.post('/boards', (req, res) => {
-    console.log('findBoards');
-    db.findBoards(req.body).then(data => res.send(data));
+    db.findBoards(req.body._id).then(data => res.send(data));
 });
 
 const server = app.listen(serverPort, () => {

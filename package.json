@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "bootstrap": "^3.3.7",
     "cors": "^2.8.3",
@@ -11,8 +12,11 @@
     "mongoose": "^4.11.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
-    "redux": "^3.7.1"
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.7.1",
+    "redux-promise": "^0.5.3"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

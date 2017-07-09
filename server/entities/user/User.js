@@ -11,7 +11,7 @@ const UserSchema = new Schema({
 });
 
 UserSchema.statics.findByEmail = function(request) {
-    return this.model('User').findOne({  email: 'request' });
+    return this.model('User').findOne({  email: request });
 };
 
 const User = mongoose.model('User', UserSchema);

@@ -4,18 +4,16 @@
 
 import api from '../api/api.js'
 
-import { apiPrefix } from '../config.json'
+export const LOGIN_USER = 'LOGIN_USER';
 
-const AuthActions = {
-    logInUser(data) {
-        api.logInUser(data)
-            .then((data) =>
-            this.loadBoards(data))
-    },
+export function logInUser(request) {
+    let result = api.logInUser(request)
+        .then((data) => {
+            return data;
+        });
 
-    loadBoards(data) {
-        api.loadBoards(data)
+    return {
+        type: LOGIN_USER,
+        payload: result
     }
-};
-
-export default AuthActions;
+}
