@@ -10,16 +10,11 @@ const BoardSchema = new Schema({
     title: { type: String },
     // lists: [ String ],
     color: { type: String },
-    createdAd: {type: Date}
+    createdAd: { type: Date }
 });
 
 BoardSchema.statics.findByUserId = function(request) {
-    let result = null;
-    this.model('Board').find({'userId' : request}, function(err, found) {
-        console.log(found);
-        result = found;
-    });
-    return result;
+    return this.model('Board').find({ 'userId': request });
 };
 
 const Board = mongoose.model('Board', BoardSchema);

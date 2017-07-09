@@ -10,15 +10,11 @@ const ListSchema = new Schema({
     title: { type: String },
     // cards: [ String ],
     color: { type: String },
-    createdAd: {type: Date}
+    createdAd: { type: Date }
 });
 
 ListSchema.statics.findByBoardId = function(request) {
-    let result = null;
-    this.model('List').find({'boardId' : request}, function(err, found) {
-        result = found;
-    });
-    return result;
+    return this.model('List').find({ 'boardId' : request });
 };
 
 const List = mongoose.model('List', ListSchema);
