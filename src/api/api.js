@@ -8,7 +8,18 @@ import { apiPrefix } from '../config.json'
 
 export default {
     logInUser(data) {
-        return axios.post(`${apiPrefix}/login`, data);
+      return fetch(`${apiPrefix}/login`, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        accept: 'application/json',
+        method: 'post',
+        body: JSON.stringify(data)
+      }).then((result) => {
+        return result.json();
+      }).then((result) => {
+        return result;
+      });
     },
 
     loadBoards(data) {

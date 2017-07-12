@@ -40,7 +40,7 @@ export class Boards extends Component {
 
 function mapStateToProps(state) {
     return {
-        isAuthorized: state.boards.isAuthorized
+        isAuthorized: state.auth.isAuthorized
     };
 }
 
