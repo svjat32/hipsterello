@@ -9,7 +9,7 @@ export default function(state = {}, action) {
       case LOGIN_USER:
             return {
                 ...state,
-                ...{ isAuthorized: !!action.payload._id}
+                ...{ isAuthorized: !!action.payload.data._id}
             };
         default:
             return state;
