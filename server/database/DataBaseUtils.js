@@ -3,6 +3,8 @@
  */
 
 import mongoose from 'mongoose';
+import bluebird from 'bluebird';
+
 import config from '../../src/config.json';
 import '../entities/user/User.js';
 import '../entities/board/Board.js';
@@ -13,6 +15,8 @@ const User = mongoose.model('User');
 const Board = mongoose.model('Board');
 const List = mongoose.model('List');
 const Card = mongoose.model('Card');
+
+mongoose.Promise = bluebird;
 
 export function setUpConnection() {
     mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`);
@@ -39,17 +43,17 @@ export function createUser(data) {
 
 // data === some User
 export function deleteUser(data) {
-    return User.findByEmail(data.email).remove();
+    User.findOne({ email: data.email }).remove();
 }
 
 // data === some User
 export function deleteUserById(data) {
-    return User.findById(data.id).remove();
+    User.findById(data.id).remove();
 }
 
 // data === some User
 export function findBoards(data) {
-    return Board.findByUserId(data.userId)
+    return Board.findByUserId(data.userId);
 }
 
 // data === some Board
@@ -62,7 +66,7 @@ export function createBoard(data) {
     const board = new Board({
         userId: data.userId,
         title: data.title,
-        lists: data.lists,
+        // lists: data.lists,
         color: data.color,
         createdAt: new Date()
     });
@@ -72,7 +76,7 @@ export function createBoard(data) {
 
 // data === some Board
 export function deleteBoard(data) {
-    return Board.findById(data.boardId).remove();
+    Board.findById(data.boardId).remove();
 }
 
 // data === some Board
@@ -90,7 +94,7 @@ export function createList(data) {
     const list = new List({
         boardId: data.boardId,
         title: data.title,
-        cards: data.cards,
+        // cards: data.cards,
         color: data.color,
         createdAt: new Date()
     });
@@ -100,7 +104,7 @@ export function createList(data) {
 
 // data === some List
 export function deleteList(data) {
-    return List.findById(data.listId).remove();
+    List.findById(data.listId).remove();
 }
 
 // data === some List
@@ -128,5 +132,5 @@ export function createCard(data) {
 
 // data === some Card
 export function deleteCard(data) {
-    return Card.findById(data.id).remove();
+    Card.findById(data.id).remove();
 }

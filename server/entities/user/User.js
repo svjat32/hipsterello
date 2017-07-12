@@ -10,8 +10,8 @@ const UserSchema = new Schema({
     password: { type: String },
 });
 
-UserSchema.methods.findByEmail = function(request) {
-    return this.model('User').findOne({ email: this.email }, request);
+UserSchema.statics.findByEmail = function(request) {
+    return this.model('User').findOne({  email: request });
 };
 
 const User = mongoose.model('User', UserSchema);
