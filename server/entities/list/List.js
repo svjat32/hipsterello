@@ -6,11 +6,11 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const ListSchema = new Schema({
-    boardId: { type: String },
-    title: { type: String },
-    cards: { type: String },
-    color: { type: String },
-    createdAd: {type: Date}
+    title:     String,
+    cards:     String,
+    color:     String,
+    cardsId:   [Schema.Types.ObjectId],
+    createdAd: Date
 });
 
 ListSchema.methods.findByBoardId = function(request) {
