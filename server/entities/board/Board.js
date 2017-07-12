@@ -6,17 +6,29 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const BoardSchema = new Schema({
-    userId:    String,
-    title:     String,
-    lists:     String,
-    color:     String,
-    listsId:   [Schema.Types.ObjectId],
-    createdAd: Date
+    userId: {
+        type: Schema.Types.ObjectId,
+        // required: true
+    },
+    title: {
+        type: String
+    },
+    color: {
+        type: String,
+        default: '#dcdcdc'
+    },
+    listsId: {
+        type: [Schema.Types.ObjectId],
+        default: []
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 BoardSchema.statics.findByUserId = function(request) {
     return this.model('Board').find({ 'userId': request });
 };
 
-const Board = mongoose.model('Board', BoardSchema);
-
+export const Board = mongoose.model('Board', BoardSchema);

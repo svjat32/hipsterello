@@ -6,16 +6,25 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const ListSchema = new Schema({
-    title:     String,
-    cards:     String,
-    color:     String,
-    cardsId:   [Schema.Types.ObjectId],
-    createdAd: Date
+    title: {
+        type: String
+    },
+    color: {
+        type: String,
+        default: '#f0f0f0'
+    },
+    cardsId: {
+        type: [Schema.Types.ObjectId],
+        default: []
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 ListSchema.statics.findByBoardId = function(request) {
     return this.model('List').find({ 'boardId' : request });
 };
 
-const List = mongoose.model('List', ListSchema);
-
+export const List = mongoose.model('List', ListSchema);

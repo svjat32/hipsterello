@@ -6,15 +6,25 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const CardSchema = new Schema({
-    title:     String,
-    text:      String,
-    color:     String,
-    createdAd: Date
+    title: {
+        type: String
+    },
+    text: {
+        type: String
+    },
+    color: {
+        type: String,
+        default: '#ffffff'
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 CardSchema.statics.findByListId = function(request) {
     return this.model('Card').find({ 'listId' : request });
 };
 
-const Card = mongoose.model('Card', CardSchema);
+export const Card = mongoose.model('Card', CardSchema);
 
