@@ -1,36 +1,33 @@
 import React, { Component } from 'react';
-import './App.css';
-import Auth from '../auth/Auth.js';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { logInUser } from '../auth/AuthActions';
+import Boards from './Boards';
 
 class App extends Component {
-    constructor(props) {
-        super();
-
-        this.state = {
-            condition: 'LP',
+    renderHelper() {
+        if (this.props.isAuthorized) {
+            return ( <Boards /> );
+        } else {
+            return ( <Redirect to='/login'/> );
         }
     }
 
     render() {
-        switch (this.state.condition) {
-            case 'LP':
-                return (
-                    <div className="App">
-                        <Auth />
-                    </div>
-                );
-            break;
-
-            case 'BRD':
-            {
-                return(
-                    <div className="App">
-                        <h1>In Board</h1>
-                    </div>);
-            }
-            break;
-        }
+        return <div>{ this.renderHelper() }</div>
     }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        isAuthorized: state.auth.isAuthorized
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({ logInUser }, dispatch)
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

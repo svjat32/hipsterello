@@ -13,8 +13,8 @@ const ListSchema = new Schema({
     createdAd: Date
 });
 
-ListSchema.methods.findByBoardId = function(request) {
-    return this.model('List').find({ boardId: this.boardId }, request);
+ListSchema.statics.findByBoardId = function(request) {
+    return this.model('List').find({ 'boardId' : request });
 };
 
 const List = mongoose.model('List', ListSchema);

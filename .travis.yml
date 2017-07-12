@@ -19,5 +19,7 @@ script:
 notifications:
   email: false
   slack:
+    on_success: change
+    on_failure: always
     rooms:
       - hipsterello:8dxZ3Xs9P1HYX9MSrsFCLeRO

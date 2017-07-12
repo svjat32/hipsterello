@@ -6,7 +6,7 @@ import express from 'express';
 import cors from 'cors';
 import bp from 'body-parser';
 
-import { serverPort } from './config.json';
+import { serverPort } from '../src/config.json';
 
 import * as db from './database/DataBaseUtils';
 
@@ -16,14 +16,20 @@ db.setUpConnection();
 
 app.use( bp.json() );
 
-app.use(cors({ origin: '*' }));
+app.use( cors({ origin: '*' }) );
 
-app.post('/sign_up/', (req, res) => {
-    db.createUser(req.body).then(data => res.send(data));
+app.post('/login', (req, res) => {
+    db.findUser({email: req.body.email})
+        .then(user => {
+            return (user) ? user : db.createUser(req.body);
+        })
+        .then(data => {
+            res.send(data);
+        });
 });
 
-app.post('/sign_in/', (req, res) => {
-    db.findUser(req.body).then(data => res.send(data));
+app.post('/boards', (req, res) => {
+    db.findBoards(req.body._id).then(data => res.send(data));
 });
 
 const server = app.listen(serverPort, () => {

@@ -14,8 +14,8 @@ const BoardSchema = new Schema({
     createdAd: Date
 });
 
-BoardSchema.methods.findByUserId = function(request) {
-    return this.model('Board').find({ userId: this.userId }, request);
+BoardSchema.statics.findByUserId = function(request) {
+    return this.model('Board').find({ 'userId': request });
 };
 
 const Board = mongoose.model('Board', BoardSchema);
