@@ -6,10 +6,10 @@ import { LOGIN_USER } from './AuthActions'
 
 export default function(state = {}, action) {
     switch (action.type) {
-      case LOGIN_USER:
+        case LOGIN_USER:
             return {
                 ...state,
-                ...{ isAuthorized: !!action.payload.data._id}
+                ...{ isAuthorized: !!action.payload.data._id }
             };
         default:
             return state;

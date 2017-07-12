@@ -19,7 +19,7 @@ export class Boards extends Component {
     renderHelper() {
         if (this.props.isAuthorized) {
             this.handleBoardsLoad.bind(this);
-            return <div>There are your boards:</div>
+            return <div><h1>Welcome!</h1><br />There are your boards:</div>
         }
 
         if (!this.props.isAuthorized) {
