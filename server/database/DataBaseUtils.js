@@ -6,131 +6,19 @@ import mongoose from 'mongoose';
 import bluebird from 'bluebird';
 
 import config from '../../src/config.json';
-import '../entities/user/User.js';
-import '../entities/board/Board.js';
-import '../entities/list/List.js';
-import '../entities/card/Card.js';
-
-const User = mongoose.model('User');
-const Board = mongoose.model('Board');
-const List = mongoose.model('List');
-const Card = mongoose.model('Card');
 
 mongoose.Promise = bluebird;
 
 export function setUpConnection() {
-    mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`);
+    mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`, { useMongoClient: true });
+    mongoose.connection.once('open', function() {
+        console.log('Connected to MongoDB');
+    });
 }
 
 export function closeConnection() {
     mongoose.connection.close();
-}
-
-// data === some User
-export function findUser(data) {
-    return User.findByEmail(data.email);
-}
-
-// data === some User
-export function createUser(data) {
-    const user = new User({
-        email: data.email,
-        password: data.password
+    mongoose.connection.once('close', function() {
+        console.log('Disconnected from MongoDB');
     });
-
-    return user.save();
-}
-
-// data === some User
-export function deleteUser(data) {
-    User.findOne({ email: data.email }).remove();
-}
-
-// data === some User
-export function deleteUserById(data) {
-    User.findById(data.id).remove();
-}
-
-// data === some User
-export function findBoards(data) {
-    return Board.findByUserId(data.userId);
-}
-
-// data === some Board
-export function findBoard(data) {
-    return Board.findById(data.id);
-}
-
-// data === some Board
-export function createBoard(data) {
-    const board = new Board({
-        userId: data.userId,
-        title: data.title,
-        // lists: data.lists,
-        color: data.color,
-        createdAt: new Date()
-    });
-
-    return board.save()
-}
-
-// data === some Board
-export function deleteBoard(data) {
-    Board.findById(data.boardId).remove();
-}
-
-// data === some Board
-export function findLists(data) {
-    return List.findByBoardId(data.id);
-}
-
-// data === some List
-export function findList(data) {
-    return List.findById(data.id);
-}
-
-// data === some List
-export function createList(data) {
-    const list = new List({
-        boardId: data.boardId,
-        title: data.title,
-        // cards: data.cards,
-        color: data.color,
-        createdAt: new Date()
-    });
-
-    return list.save()
-}
-
-// data === some List
-export function deleteList(data) {
-    List.findById(data.listId).remove();
-}
-
-// data === some List
-export function findCards(data) {
-    return Card.findByListId(data.id);
-}
-
-// data === some Card
-export function findCard(data) {
-    return Card.findById(data.id);
-}
-
-// data === some Card
-export function createCard(data) {
-    const card = new Card({
-        listId: data.listId,
-        title: data.title,
-        text: data.text,
-        color: data.color,
-        createdAt: new Date()
-    });
-
-    return card.save();
-}
-
-// data === some Card
-export function deleteCard(data) {
-    Card.findById(data.id).remove();
 }

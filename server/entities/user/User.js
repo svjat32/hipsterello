@@ -6,12 +6,19 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    email: { type: String, unique: true },
-    password: { type: String },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    }
 });
 
 UserSchema.statics.findByEmail = function(request) {
     return this.model('User').findOne({  email: request });
 };
 
-const User = mongoose.model('User', UserSchema);
+export const User = mongoose.model('User', UserSchema);
