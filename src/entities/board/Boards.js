@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { getBoards } from './BoardsActions'
+import {List} from "../list/List";
 
 export class Boards extends Component {
     handleBoardsLoad(event) {
@@ -19,7 +20,7 @@ export class Boards extends Component {
     renderHelper() {
         if (this.props.isAuthorized) {
             this.handleBoardsLoad.bind(this);
-            return <div><h1>Welcome!</h1><br />There are your boards:</div>
+            return <div><h1>Welcome!</h1><br />There are your boards:<br /> <List/></div>
         }
 
         if (!this.props.isAuthorized) {

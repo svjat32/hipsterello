@@ -5,7 +5,7 @@
 import { combineReducers } from 'redux';
 
 import AuthReducer from '../auth/AuthReducer';
-import BoardsReducer from './BoardsReducer';
+import BoardsReducer from '../entities/board/BoardsReducer';
 
 const appReducer = combineReducers({
     auth: AuthReducer,

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { logInUser } from '../auth/AuthActions';
-import Boards from './Boards';
+import Boards from '../entities/board/Boards';
 
 class App extends Component {
     renderHelper() {
