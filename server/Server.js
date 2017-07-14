@@ -34,7 +34,7 @@ app.post('/login', (req, res) => {
 
 app.post('/user/update', (req, res) => {
     User
-        .updateUser(req.body.userData)
+        .updateUser(req.body)
         .then((updatedUser) => {
             res.send(updatedUser)
     });
@@ -42,7 +42,7 @@ app.post('/user/update', (req, res) => {
 
 app.post('/user/delete', (req, res) => {
     User
-        .deleteUser(req.body.userData)
+        .deleteUser(req.body)
         .then((deletedUser) => {
             res.send(deletedUser)
         })
@@ -59,7 +59,7 @@ app.post('/boards', (req, res) => {
 
 app.post('/board/create', (req, res) => {
     Board
-        .createBoard(req.body.boardData, req.body.userId)
+        .createBoard(req.body, req.body.userId)
         .then((createdBoard) => {
             res.send(createdBoard)
     });
@@ -75,7 +75,7 @@ app.get('/board/:id', (req, res) => {
 
 app.post('/board/update', (req, res) => {
     Board
-        .updateBoard(req.body.boardData)
+        .updateBoard(req.body)
         .then((updatedBoard) => {
             res.send(updatedBoard)
     });
@@ -83,7 +83,7 @@ app.post('/board/update', (req, res) => {
 
 app.post('/board/delete', (req, res) => {
     Board
-        .deleteBoard(req.body.boardData)
+        .deleteBoard(req.body)
         .then((deletedBoard) => {
             res.send(deletedBoard)
         });
@@ -91,7 +91,7 @@ app.post('/board/delete', (req, res) => {
 
 app.post('/list/create', (req, res) => {
     List
-        .createList(req.body.listData, req.body.boardId)
+        .createList(req.body, req.body.boardId)
         .then((createdList) => {
             res.send(createdList)
     });
@@ -107,7 +107,7 @@ app.get('/list/:id', (req, res) => {
 
 app.post('/list/update', (req, res) => {
     List
-        .updateList(req.body.listData)
+        .updateList(req.body)
         .then((updatedList) => {
             res.send(updatedList)
         });
@@ -115,7 +115,7 @@ app.post('/list/update', (req, res) => {
 
 app.post('/list/delete', (req, res) => {
     List
-        .deleteList(req.body.listData)
+        .deleteList(req.body)
         .then((deletedList) => {
             res.send(deletedList)
         });
@@ -123,7 +123,7 @@ app.post('/list/delete', (req, res) => {
 
 app.post('/card/create', (req, res) => {
     Card
-        .createCard(req.body.cardData, req.body.listId)
+        .createCard(req.body, req.body.listId)
         .then((createdCard) => {
             res.send(createdCard)
         });
@@ -139,7 +139,7 @@ app.get('/card/:id', (req, res) => {
 
 app.post('/card/update', (req, res) => {
     Card
-        .updateCard(req.body.cardData)
+        .updateCard(req.body)
         .then((updatedCard) => {
             res.send(updatedCard)
         });
@@ -147,7 +147,7 @@ app.post('/card/update', (req, res) => {
 
 app.post('/card/delete', (req, res) => {
     Card
-        .deleteCard(req.body.cardData)
+        .deleteCard(req.body)
         .then((deletedCard) => {
             res.send(deletedCard)
         });
