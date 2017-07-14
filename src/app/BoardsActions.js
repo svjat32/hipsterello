@@ -9,6 +9,6 @@ export const GET_BOARDS = 'GET_BOARDS';
 export function getBoards(request) {
     return {
         type: GET_BOARDS,
-        payload: api.loadBoards(request)
+        payload: api.getBoards(request)
     }
 }
