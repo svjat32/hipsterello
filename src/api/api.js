@@ -13,6 +13,9 @@ export default {
 
     loadBoards(data) {
         return axios.post(`${apiPrefix}/boards`, data);
+    },
+    loadList(data) {
+        return axios.post(`${apiPrefix}/list`, data);
     }
 }
 
