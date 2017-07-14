@@ -10,10 +10,10 @@ import { serverPort } from '../src/config.json';
 
 import * as db from './database/DataBaseUtils';
 
-import User  from './rest/User';
-import Board from './rest/Board';
-import List  from './rest/List';
-import Card  from './rest/Card';
+import User  from './database/crud/User';
+import Board from './database/crud/Board';
+import List  from './database/crud/List';
+import Card  from './database/crud/Card';
 
 const app = express();
 
