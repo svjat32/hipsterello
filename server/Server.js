@@ -32,8 +32,6 @@ app.post('/boards', (req, res) => {
     db.findBoards(req.body._id).then(data => res.send(data));
 });
 
-
-
 const server = app.listen(serverPort, () => {
     console.log(`Server is up and running on port ${serverPort}`);
 });

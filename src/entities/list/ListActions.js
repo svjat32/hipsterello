@@ -8,6 +8,6 @@ export const GET_LIST = 'GET_LIST';
 export function getList(request) {
     return {
         type: GET_LIST,
-        payload: api.loadList(request)
+        payload: api.getList(request._id)
     }
 }
