@@ -28,7 +28,7 @@ export function updateList(request) {
         payload: api.updateList(request)
     }
 }
-export function deleteCard(request) {
+export function deleteList(request) {
     return {
         type: DELETE_LIST,
         payload: api.deleteList(request)
