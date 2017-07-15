@@ -49,7 +49,7 @@ app.post('/user/delete', (req, res) => {
         .catch(console.log.bind(console));
 });
 
-app.post('/board/user/:id', (req, res) => {
+app.get('/board/user/:id', (req, res) => {
     Board
         .findBoardByUserId(req.body._id)
         .then((foundBoard) => {
