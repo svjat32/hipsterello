@@ -10,7 +10,7 @@ export class List extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: this.props.getList(this.props.boardId)
+            list: this.props.getList(this.props.board)
         }
     }
 
@@ -22,8 +22,8 @@ export class List extends Component {
 
 function mapStateToProps(state) {
     return {
-        boardId: state.boards.data._id,
-        list: state.list.data
+        boardId: state.boards._id,
+        list: state.list
     };
 }
 
