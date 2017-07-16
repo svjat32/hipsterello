@@ -7,10 +7,11 @@ import { bindActionCreators } from 'redux';
 import { getList } from './ListActions';
 
 export class List extends Component {
-    handleListLoad(event) {
-        event.preventDefault();
-
-        getList(this.store.boardId);
+    constructor(props) {
+        super(props);
+        this.state = {
+            list: this.props.getList(this.props.boardId)
+        }
     }
 
     render() {
@@ -18,8 +19,16 @@ export class List extends Component {
         return <div>This is your list:</div>
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        boardId: state.boards.data._id,
+        list: state.list.data
+    };
+}
+
 const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({ getList }, dispatch)
 };
 
-export default connect(mapDispatchToProps())(List);
+export default connect(mapStateToProps, mapDispatchToProps)(List);
